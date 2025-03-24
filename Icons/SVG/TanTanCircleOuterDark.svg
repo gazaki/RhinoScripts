@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="48"
+   height="48"
+   version="1.1"
+   viewBox="0pt 0pt 48pt 48pt"
+   fill-dark="#FFF"
+   stroke-dark="none"
+   id="svg9"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <svg
+     viewBox="0 0 48 48"
+     version="1.1"
+     id="svg8">
+    <clipPath
+       id="a">
+      <path
+         clip-rule="evenodd"
+         d="m0 0h36v36h-36z"
+         id="path1" />
+    </clipPath>
+    <clipPath
+       id="b">
+      <path
+         d="m6.978 8.478h19.809v19.81h-19.809z"
+         id="path2" />
+    </clipPath>
+    <g
+       clip-path="url(#a)"
+       transform="matrix(1.3333333,0,0,1.3333333,-6.4746,4.8455821)"
+       id="g8" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-dasharray:none;paint-order:fill markers stroke;stroke-opacity:1"
+       id="path9"
+       cx="16.250031"
+       cy="-16.250031"
+       r="13.250031"
+       transform="scale(1,-1)" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-dasharray:none;paint-order:fill markers stroke;stroke-opacity:1"
+       id="path9-0"
+       cx="37.544136"
+       cy="-37.544136"
+       r="7.4558644"
+       transform="scale(1,-1)" />
+    <g
+       id="Default"
+       transform="matrix(0.35656427,0,0,0.35656427,-109.3535,-126.79973)"
+       style="display:none;opacity:1;stroke:#fffb13;stroke-width:12.6204;stroke-dasharray:none;stroke-opacity:0.542857">
+      <path
+         d="m 381.57944,378.0483 46.72986,69.5235"
+         stroke="#000000"
+         stroke-width="0.24"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         fill="none"
+         id="path1-9"
+         style="stroke:#fffb13;stroke-width:12.6204;stroke-dasharray:none;stroke-opacity:0.542857" />
+      <path
+         d="m 329.45526,430.17252 69.52347,46.72985"
+         stroke="#000000"
+         stroke-width="0.24"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         fill="none"
+         id="path2-4"
+         style="stroke:#fffb13;stroke-width:12.6204;stroke-dasharray:none;stroke-opacity:0.542857" />
+    </g>
+    <g
+       id="g14"
+       transform="matrix(0.35656427,0,0,0.35656427,-109.3535,-126.79973)"
+       style="opacity:0.5;stroke-width:4.20681523;stroke-dasharray:none;stroke:#ffffff;stroke-opacity:1">
+      <path
+         d="m 381.57944,378.0483 46.72986,69.5235"
+         stroke="#000000"
+         stroke-width="0.24"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         fill="none"
+         id="path13"
+         style="stroke-width:4.20681523;stroke-dasharray:none;stroke:#ffffff;stroke-opacity:1" />
+      <path
+         d="m 329.45526,430.17252 69.52347,46.72985"
+         stroke="#000000"
+         stroke-width="0.24"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         fill="none"
+         id="path14"
+         style="stroke-width:4.20681523;stroke-dasharray:none;stroke:#ffffff;stroke-opacity:1" />
+    </g>
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.27828;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect14"
+       width="5.1343708"
+       height="5.1343708"
+       x="24.417839"
+       y="-10.430745"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.27828;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect14-8"
+       width="5.1343708"
+       height="5.1343708"
+       x="4.4444618"
+       y="-28.617105"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.27828;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect14-82"
+       width="5.1343708"
+       height="5.1343708"
+       x="40.763931"
+       y="-35.394146"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.27828;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect14-4"
+       width="5.1343708"
+       height="5.1343708"
+       x="30.306362"
+       y="-45.996471"
+       transform="scale(1,-1)" />
+  </svg>
+</svg>
