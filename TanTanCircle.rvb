@@ -1,0 +1,131 @@
+Option Explicit
+ 
+
+'Script written by Aske Demant Garling
+'Script copyrighted by Aske Demant Garling
+'Script version 0.3 25. February 2025
+'
+'Adds the function "TanTanCircleOuter"
+'Lets the user select two circles on the same plane and creates and selects two tangens outer lines. 
+'
+'
+'Change Log:
+'version 0.1 unknown date:
+'	Script Created
+'
+'version 0.2 25. February 2025:
+'	Added check to see if the tangent lines can actually be made.
+'
+'version 0.3 23. March 2025:
+'	Clean-up for github
+'	Added this version log
+'	Created svg icons for Rhino 8+ (light and dark versions)
+'
+
+
+
+Rhino.AddAlias "TanTanCircleOuter", "_NoEcho _-Runscript (TanTanCircleOuter)"
+
+
+'Call TanTanCircleOuter()
+Sub TanTanCircleOuter()
+	Dim circle1, circle2
+	Dim center1,center2
+	Dim radius1, radius2
+	Dim circlePlane
+
+	circle1 = rhino.GetObject("Select first circle", 4)	
+	If isNull(circle1) Then Exit Sub
+	If Not Rhino.IsCircle(circle1) Then 
+		rhino.Print("Selected curve is not a circle")
+		Exit Sub
+	End If
+	
+	circle2 = rhino.GetObject("Select second circle", 4)
+	If isNull(circle2) Then Exit Sub
+	If Not Rhino.IsCircle(circle2) Then 
+		rhino.Print("Selected curve is not a circle")
+		Exit Sub
+	End If
+		
+	'Check if they are in same plane
+	circlePlane = Rhino.CurvePlane(circle1)
+	
+	If Not Rhino.IsCurveInPlane(circle2, circlePlane) Then
+		Rhino.Print("Circles are not on the same plane")
+		Exit Sub
+	End If
+	
+	center1 = Rhino.CircleCenterPoint(circle1)
+	center2 = Rhino.CircleCenterPoint(circle2)
+	
+	If Rhino.VectorCompare(center1, center2) = 0 Then
+		rhino.Print("Both cirles has the same center, cannot create tangent lines")
+		Exit Sub
+	End If
+	
+	'Radius 2 should be the smallest radius
+	
+	radius1 = Rhino.CircleRadius(circle1)
+	radius2 = Rhino.CircleRadius(circle2)
+	
+	'if the you have selected the smallest circle first, this is where it's fliped
+	If radius2 > radius1 Then 
+		center2 = Rhino.CircleCenterPoint(circle1)
+		center1 = Rhino.CircleCenterPoint(circle2)
+	
+		radius2 = Rhino.CircleRadius(circle1)
+		radius1 = Rhino.CircleRadius(circle2)	
+	End If
+	
+	
+	'Check of the smallest circle is "outside" of the big one
+	If (rhino.Distance(center1, center2) + radius2 <= radius1) Then
+		Rhino.Print("The smaller circle need to be outside of the bigger circle")
+		Exit Sub
+	End If
+	
+	
+	Dim radiusDistance, radiusDelta, centerDelta
+	
+	centerDelta = Rhino.VectorDivide(Rhino.VectorAdd(center1, center2), 2)
+	radiusDelta = radius1 - radius2
+	
+	Dim tanLine1, tanLine2, translateVector, planeNormalVector
+	
+	rhino.EnableRedraw(False)
+	
+	If radiusDelta = 0 Then
+		'Circles are the same size
+		
+		tanLine1 = rhino.AddLine(center1, center2)
+		tanLine2 = rhino.AddLine(center1, center2)
+		planeNormalVector = circlePlane(3)
+		
+		translateVector = Rhino.VectorCrossProduct(Rhino.VectorUnitize(circlePlane(3)), rhino.VectorUnitize(rhino.VectorSubtract(center1, center2)))
+		
+		Call rhino.MoveObject(tanLine1, rhino.VectorScale(translateVector, radius1))
+		Call rhino.MoveObject(tanLine2, rhino.VectorScale(translateVector, radius1 * -1))		
+	Else
+		Dim refCirclecenter, arrPlane, refCircleTan, refCircleIntersects
+		refCirclecenter = rhino.AddCircle(array(centerDelta, circlePlane(1), circlePlane(2), circlePlane(3)), rhino.Distance(center1, center2) / 2)
+		refCircleTan = rhino.AddCircle(array(center1, circlePlane(1), circlePlane(2), circlePlane(3)), radiusDelta)
+		refCircleIntersects = Rhino.CurveCurveIntersection(refCirclecenter, refCircleTan)
+	
+		'rhino.Print("intersect result:" + Cstr(UBound(refCircleIntersects)))
+		
+		tanLine1 = Rhino.AddLine(refCircleIntersects(0, 1), center2)
+		translateVector = rhino.VectorUnitize(rhino.VectorSubtract(refCircleIntersects(0, 1), center1))
+		Call rhino.MoveObject(tanLine1, rhino.VectorScale(translateVector, radius1 - radiusDelta))
+	
+		tanLine2 = Rhino.AddLine(refCircleIntersects(1, 1), center2)
+		translateVector = rhino.VectorUnitize(rhino.VectorSubtract(refCircleIntersects(1, 1), center1))
+		
+		Call rhino.MoveObject(tanLine2, rhino.VectorScale(translateVector, radius1 - radiusDelta))		
+		rhino.DeleteObjects(array(refCirclecenter, refCircleTan))
+	End If
+	rhino.EnableRedraw(True)
+	
+	Rhino.SelectObjects(array(tanLine1, tanLine2))
+	
+End Sub
